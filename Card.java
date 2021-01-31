@@ -66,19 +66,19 @@ public class Card {
 
         switch (suit) {
             case 1:
-                output += " diamonds";
+                output += "diamonds";
                 break;
 
             case 2:
-                output += " clubs";
+                output += "clubs";
                 break;
 
             case 3:
-                output += " hearts";
+                output += "hearts";
                 break;
 
             case 4:
-                output += " spades";
+                output += "spades";
                 break;
 
             default:

@@ -1,3 +1,12 @@
+/*
+Date:
+    1/14/2021
+Coder name:
+    Dylan Masulis
+Project name:
+    Card Game
+*/
+
 public class Card {
     private int value = 0;
     private int suit = 0;

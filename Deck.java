@@ -7,13 +7,6 @@ Coder name:
     Dylan Masulis
 Project name:
     Card Game
-Notes:
-    -use arraylist(?) to list all cards
-    -use random num generator, range 1-52 to deal out cards.
-        -first card deals to p1, second to p2, third to p1, and so on.
-    -constructor will initialize all cards in deck??
-    
-    all changes will be committed to main branch on the repo
 */
 
 public class Deck {

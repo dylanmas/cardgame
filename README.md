@@ -3,7 +3,4 @@ Checklist: https://docs.google.com/spreadsheets/d/1akQSxmF4Xt2OlmYRp9h7bf5NkyL2_
 Checkpoint 1: Card and Deck class
 
 TODO:
--Add comments to the Deck class
--Add comments to the Card class
--Add the Deal() method
-  -This means that I need to make the player class
+-Check issues. I use the issues pane as my todo list.

@@ -75,6 +75,7 @@ public class Deck {
     //the good stuff: the shuffle and deal method!
 
     public void shuffle(){
+        //the idea to use collections.shuffle came from Mr. O'Brien. Thanks for the idea!
         Collections.shuffle(deck);
     }
 

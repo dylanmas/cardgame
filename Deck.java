@@ -77,7 +77,7 @@ public class Deck {
         //i will determine suits
         for (int i = 1; i <= 4; i++) {
             //j determines the value
-            for(int j = 1; j <= 13; j++){
+            for(int j = 2; j <= 14; j++){
                 //adds the new card based on the two values j and i.
                 deck.add(new Card(j, i));
             }

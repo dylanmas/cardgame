@@ -51,7 +51,7 @@ public class Card {
         
         //switch determines the output based on value.
         switch(value){
-            case 1:
+            case 14:
                 output += "ace";
                 break;
 
@@ -124,7 +124,7 @@ public class Card {
 
         //this switch determines the value of the card to output.
         switch(value){
-            case 1:
+            case 14:
                 output += "ace of ";
                 break;
 

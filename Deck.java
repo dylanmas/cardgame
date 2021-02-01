@@ -83,11 +83,11 @@ public class Deck {
     //the good stuff: the shuffle and deal method!
 
     public void shuffle(){
-
         Collections.shuffle(deck);
     }
 
     public void deal(){
         //must have player initialized to write
+        
     }
 }

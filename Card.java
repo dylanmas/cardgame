@@ -13,7 +13,7 @@ public class Card {
         //-1 means joker
         value = -1;
         suit = -1;
-    
+    }
 
     //getters & setters
 

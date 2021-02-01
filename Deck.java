@@ -1,6 +1,5 @@
 import java.util.*;
 
-
 /*
 Date:
     1/17/2021
@@ -86,8 +85,12 @@ public class Deck {
         Collections.shuffle(deck);
     }
 
-    public void deal(){
-        //must have player initialized to write
+    public void deal(Player p1, Player p2){
+        //must have two players initialized to write
+        for (int i = 1; i <= 26; i++) {
+            p1.addCard(deck.get(i));
+            p2.addCard(deck.get(i + 26));
+        }
         
     }
 }

@@ -29,6 +29,25 @@ public class Card {
         return this.suit;
     }
 
+    public String getSuitName() {
+        switch (suit) {
+            case 1:
+                return "diamonds";
+
+            case 2:
+                return "clubs";
+
+            case 3:
+                return "hearts";
+
+            case 4:
+                return "spades";
+
+            default:
+                return "!! Invalid Suit Error !!";
+        }
+    }
+
     public void setSuit(int suit) {
         this.suit = suit;
     }

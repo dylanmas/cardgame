@@ -16,5 +16,9 @@ public class ObjectTester {
 
         System.out.println(pl1);
         System.out.println(pl2 + "DIVIDER");
+
+        Card fff = pl2.dealTop();
+
+        System.out.println("\n" + fff.toString() + "\n\t\t\tHere's the new cards" + pl2);
     }
 }

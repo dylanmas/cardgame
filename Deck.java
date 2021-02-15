@@ -54,6 +54,7 @@ public class Deck {
     }
 
     //----------------------------------------------------------toString method:
+    
     public String toString(){
         //the purpose of getDeck() is to list the entire deck.
         //good for debugging if you want to see what cards are left.

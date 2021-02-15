@@ -94,7 +94,7 @@ public class Deck {
     //should be used after calling shuffleCards() 
     public void deal(Player p1, Player p2){
         //must have two players initialized to use
-        for (int i = 1; i <= 26; i++) {
+        for (int i = 0; i < 26; i++) {
             //adds index "i" card to each player.
             p1.addPlayerCard(deck.get(i));
             //p2 has 26 added to the index to access the other half of the cards.

@@ -23,7 +23,7 @@ public class Player {
         inventory.remove(index);
     }
 
-    public void removeTopPlayerCard(int){
+    public void removeTopPlayerCard(){
         inventory.remove(inventory.size() - 1);
     }
     
@@ -45,7 +45,7 @@ public class Player {
 
 
     public String toString(){
-        String output = "";
+        String output = name + "\n";
         for (int i = 1; i < inventory.size(); i++) {
             output += inventory.get(i) + "\n";
         }

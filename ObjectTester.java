@@ -7,5 +7,14 @@ public class ObjectTester {
         
         Deck lol = new Deck(1);
         System.out.println(lol);
+
+        Player pl1 = new Player("Johannesburg");
+        Player pl2 = new Player("CapeTown");
+
+        lol.shuffleCards();
+        lol.deal(pl1, pl2);
+
+        System.out.println(pl1);
+        System.out.println(pl2 + "DIVIDER");
     }
 }

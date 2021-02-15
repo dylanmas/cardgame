@@ -87,7 +87,7 @@ public class Player {
         return output;
     }
 
-    //dealTop removes a card at a specified index and returns the removed card (ideally into a variable)
+    //dealIndex removes a card at a specified index and returns the removed card (ideally into a variable)
     public Card dealIndex(int index){
         //creates output variable as a temp
         Card output;

@@ -1,5 +1,6 @@
-public class ObjectTester {
+/*public class ObjectTester {
     public static void main(String[] args) {
+        
         Card test = new Card(13, 2);
         Card foo = new Card(1, 2);
         System.out.println(test.getSuitName() + "jfsdjlkfsdjklfdsjkldsfakjl");
@@ -21,4 +22,4 @@ public class ObjectTester {
 
         System.out.println("\n" + fff.toString() + "\n\t\t\tHere's the new cards" + pl2);
     }
-}
+}*/

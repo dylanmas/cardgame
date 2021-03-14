@@ -37,12 +37,15 @@ public class War {
         System.out.println("Here is player 1's deck:\n" + p1.toString() + "\n\nAnd here is player 2's deck:\n" + p2.toString() + "\n(e)");
         cont = input.nextLine();
 
-        boolean int == false;
+        boolean win == false;
 
         while (win == false) {
+            //remove 1 card from each player
             Card p1card = p1.dealTop();
             Card p2card = p2.dealTop();
+            //p1card and p2card will store the single cards pulled from each player
 
+            //add to the central deck
             centerDeck.addCard(p1card);
             centerDeck.addCard(p2card);
 
@@ -55,13 +58,28 @@ public class War {
                     System.out.println("Player 1 has the higher value card.\nThey will be adding both drawn cards to their deck. (e)");
                     cont = input.nextLine();
 
+                    centerDeck.removeCard();
+                    centerDeck.removeCard();
 
-                    centerDeck.
+                    p2.addPlayerCardAt(p1card, 0);
+                    p1.addPlayerCardAt(p2card, 0);
+
+                    System.out.println("Player 1 now has " + p1.getDeckSize() + " cards. (e)");
+                    cont = input.nextLine();
 
                     break;
                 
                 case 2:
                     System.out.println("Player 2 has the higher value card.\nThey will be adding both drawn cards to their deck. (e)");
+                    cont = input.nextLine();
+
+                    centerDeck.removeCard();
+                    centerDeck.removeCard();
+
+                    p1.addPlayerCardAt(p2card, 0);
+                    p2.addPlayerCardAt(p1card, 0);
+
+                    System.out.println("Player 2 now has " + p2.getDeckSize() + " cards. (e)");
                     cont = input.nextLine();
                     break;
 
@@ -76,6 +94,10 @@ public class War {
                     break;
             }
         }
+    }
+
+    private String prediction(Player p1, Player p2){
+        return "Work-In-Progress";
     }
 
     private int cardComp(Card p1card, Card p2card){

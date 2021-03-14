@@ -51,6 +51,11 @@ public class Deck {
     public void addCard(Card insert){
         deck.add(insert);
     }
+    
+    //removeCard() removes a card from the top of the deck.
+    public void removeCard(){
+        deck.remove(deck.size() - 1);
+    }
 
     //wipeDeck() clears the entire deck of all cards.
     //likely going to be used for starting new games?

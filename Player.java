@@ -56,8 +56,8 @@ public class Player {
 
     //getDeckSize won't ever be used, but it's there just in case
     //returns the size of the player's inventory
-    public String getDeckSize(){
-        return "" + inventory.size();
+    public int getDeckSize(){
+        return inventory.size();
     }
     
     //----------------------------------------------------------toString method:
@@ -83,6 +83,18 @@ public class Player {
         output = inventory.get(inventory.size() - 1);
         //removes top the card from the inventory
         inventory.remove(inventory.size() - 1);
+        //returns the output
+        return output;
+    }
+
+    //dealBottom removes the bottom card and returns the removed card (ideally into a variable)
+    public Card dealBottom(){
+        //creates output variable as a temp
+        Card output;
+        //assigns the card being removed to the temp
+        output = inventory.get(0);
+        //removes top the card from the inventory
+        inventory.remove(0);
         //returns the output
         return output;
     }

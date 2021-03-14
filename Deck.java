@@ -43,8 +43,13 @@ public class Deck {
     }
 
     //addCard() inserts specific data at a certain index of the deck.
-    public void addCard(int pos, Card insert){
+    public void addCardPos(int pos, Card insert){
         deck.add(pos, insert);
+    }
+
+    //addCard() inserts specific data at the top of the deck.
+    public void addCard(Card insert){
+        deck.add(insert);
     }
 
     //wipeDeck() clears the entire deck of all cards.

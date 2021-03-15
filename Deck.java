@@ -101,7 +101,7 @@ public class Deck {
         Collections.shuffle(deck);
     }
 
-    //deal() deals one half of the deck to each player.
+    //deal(arg, arg) deals one half of the deck to each player.
     //should be used after calling shuffleCards() 
     public void deal(Player p1, Player p2){
         //must have two players initialized to use
@@ -110,6 +110,17 @@ public class Deck {
             p1.addPlayerCard(deck.get(i));
             //p2 has 26 added to the index to access the other half of the cards.
             p2.addPlayerCard(deck.get(i + 26));
+        }
+        
+    }
+
+    //deal(arg) deals all of the deck to a player.
+    //should be used after declaring war. 
+    public void deal(Player p){
+        //must have two players initialized to use
+        for (int i = 0; i < deck.size(); i++) {
+            //adds index "i" card to each player.
+            p.addPlayerCard(deck.get(i));
         }
         
     }

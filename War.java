@@ -8,37 +8,55 @@ Project name:
 */
 import java.util.*;
 
+import jdk.vm.ci.meta.Constant;
+
 public class War {
+
+    Player p1, p2;
+    Scanner input = new Scanner(System.in);
+    Deck centerDeck;
+    String cont = "";
+    boolean fastmodeEnabled = false;
+
+    /*
+        NOTES TO SELF:
+        REMOVE REVEALING OF DECK TO VIEWER.
+        MAKE IT DRAW FROM TOP, NOT BOTTOM AND SUCH.
+        CREATE COMMANDS (!FASTMODE SKIPS ALL ENTER PROMPTS.)
+    */
+
     public War (){
-        Scanner input = new Scanner(System.in);
-        String cont = "d";
-        
+
         System.out.println("When you see (e) at the end of the text, press enter to continue.\n(e)");
         cont = input.nextLine();
 
-        System.out.println("The game is starting...\nPlease welcome Player 1 and Player 2!\nBoth players will be competing to see who wins!\n(e)");
-        cont = input.nextLine();
+        System.out.println("At any time, you can type in \"fastmode\" to skip all enter prompts, saving you time.\n(e)");
+        checkCommand();
 
-        Player p1 = new Player("Player 1");
-        Player p2 = new Player("Player 2");
+        System.out.println("The game is starting...\nPlease welcome Player 1 and Player 2!\nBoth players will be competing to see who wins!\n(e)");
+        checkCommand();
+
+        p1 = new Player("Player 1");
+        p2 = new Player("Player 2");
         
         System.out.println("The deck will be made and shuffled.\n(e)");
-        cont = input.nextLine();
+        checkCommand();
 
-        Deck centerDeck = new Deck(1);
+        centerDeck = new Deck(1);
 
         centerDeck.shuffleCards();
 
         System.out.println("Here's the cards in the deck:\n" + centerDeck + "\nThe cards will be dealt to both players.\n(e)");
-        cont = input.nextLine();
+        checkCommand();
 
         centerDeck.deal(p1, p2);
+        centerDeck.wipeDeck();
         
         System.out.println("Here is player 1's deck:\n" + p1.toString() + "\n\nAnd here is player 2's deck:\n" + p2.toString() + "\n(e)");
-        cont = input.nextLine();
+        checkCommand();
 
-        System.out.println(prediction(p1, p2) + "\n(e)");
-        cont = input.nextLine();
+        System.out.println(prediction() + "\n(e)");
+        checkCommand();
 
         boolean win = false;
 
@@ -54,12 +72,12 @@ public class War {
 
             System.out.println("Player 1 has drawn their card. It is a " + p1card);
             System.out.println("Player 2 has drawn their card. It is a " + p2card + "\n(e)");
-            cont = input.nextLine();
+            checkCommand();
 
             switch (cardComp(p1card, p2card)) {
                 case 1:
                     System.out.println("Player 1 has the higher value card.\nThey will be adding both drawn cards to their deck.\n(e)");
-                    cont = input.nextLine();
+                    checkCommand();
 
                     centerDeck.removeCard();
                     centerDeck.removeCard();
@@ -69,13 +87,13 @@ public class War {
 
                     System.out.println("Player 1 now has " + p1.getDeckSize() + " cards.\n(e)");
                     //System.out.println("Player 1 now has " + p1.toString() + " cards.\n(e)");
-                    cont = input.nextLine();
+                    checkCommand();
 
                     break;
                 
                 case 2:
                     System.out.println("Player 2 has the higher value card.\nThey will be adding both drawn cards to their deck.\n(e)");
-                    cont = input.nextLine();
+                    checkCommand();
 
                     centerDeck.removeCard();
                     centerDeck.removeCard();
@@ -85,19 +103,32 @@ public class War {
 
                     System.out.println("Player 2 now has " + p2.getDeckSize() + " cards.\n(e)");
                     //System.out.println("Player 1 now has " + p2.toString() + " cards.\n(e)");
-                    cont = input.nextLine();
+                    checkCommand();
 
                     break;
 
                 //war
                 case 0:
                     System.out.println("Both players drew equal-value cards.\n~~ A war has now commenced! ~~ \n(e)");
-                    cont = input.nextLine();
+                    checkCommand();
+
+                    doWar();
+                    
+                    System.out.println("Player 1 now has " + p1.getDeckSize() + " cards.\n(e)");
+                    System.out.println("Player 2 now has " + p2.getDeckSize() + " cards.\n(e)");
+                    
+                    //the steps are made into a method
 
                     //step 1: both players draw 1 card from their deck, which doesn't count.
 
                     //step 2: both players draw 1 more card from the deck, which counts.
-                    //whoever has the higher card takes all 6 cards.
+                    
+                    //make an if statement.
+                    //if p1 has the higher card, they take all 6 cards.
+                    //if p2 has the higher card, they take all 6 cards.
+                    //else, if both cards are equal, step 1 is repeated.
+                    
+                    
 
                     break;
 
@@ -108,7 +139,7 @@ public class War {
         }
     }
 
-    private String prediction(Player p1, Player p2){
+    private String prediction(){
         int p1result = 0;
         int p2result = 0;
 
@@ -135,6 +166,88 @@ public class War {
             return 0;
         } else {
             return -1;
+        }
+    }
+
+    private void doWar(){
+        //the steps are made into a method
+
+        //step 1: both players draw 1 card from their deck, which doesn't count.
+        Card p1card = p1.dealBottom();
+        Card p2card = p2.dealBottom();
+        System.out.println("p1card is " + p1card + "\np2card is " + p2card);
+        
+        centerDeck.wipeDeck();
+
+        centerDeck.addCard(p1card);
+        centerDeck.addCard(p2card);
+        //step 2: both players draw 1 more card from the deck, which counts.
+        p1card = p1.dealBottom();
+        p2card = p2.dealBottom();
+
+        centerDeck.addCard(p1card);
+        centerDeck.addCard(p2card);
+
+        //make an if statement.
+        if (cardComp(p1card, p2card) == 1) {
+            //player 1 takes all from deck
+            System.out.println(centerDeck + "         0f0f0f0f0f");
+            centerDeck.deal(p1);
+        } else if (cardComp(p1card, p2card) == 2){
+            //player 2 takes all from deck
+            System.out.println(centerDeck + "              ff");
+            centerDeck.deal(p2);
+        } else {
+            //if equal, war is declared again.
+            System.out.println(centerDeck);
+            doWar();
+        }
+        //if p1 has the higher card, they take all 6 cards.
+        //if p2 has the higher card, they take all 6 cards.
+        //else, if both cards are equal, step 1 is repeated.
+    }
+
+    private void checkCommand(){
+        if (fastmodeEnabled == false && cont.equals("fastmode")) {
+            fastmodeEnabled = true;
+        } else if (fastmodeEnabled == false){
+            cont = input.nextLine();
+            switch (cont) {
+                case "help":
+                    System.out.println("Help is not working at this time.\n(e)");
+                    checkCommand();
+                    break;
+                
+                case "p1cards":
+                    System.out.println("Here are the cards for Player 1:\n(e)");
+                    checkCommand();
+                    break;
+
+                case "p2cards":
+                    System.out.println("Here are the cards for Player 2:\n(e)");
+                    checkCommand();
+                    break;
+
+                case "p1decksize":
+                    System.out.println("Here is the size of Player 1's deck:\n(e)");
+                    checkCommand();
+                    break;
+
+                case "p2decksize":
+                    System.out.println("Here is the size of Player 2's deck:\n(e)");
+                    checkCommand();
+                    break;
+
+                case "":
+                    break;
+
+                default:
+                    System.out.println("I can't recognize what you typed. Try typing it in again.\n¬");
+                    checkCommand();
+                    break;
+            }
+        } else {
+            //do nothing
         }
     }
 }

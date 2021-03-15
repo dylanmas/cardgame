@@ -54,6 +54,11 @@ public class Player {
         inventory.remove(inventory.size() - 1);
     }
 
+    //wipePlayerCards removes all cards
+    public void wipePlayerCards(){
+        inventory.clear();
+    }
+
     //getDeckSize won't ever be used, but it's there just in case
     //returns the size of the player's inventory
     public int getDeckSize(){

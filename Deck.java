@@ -117,7 +117,6 @@ public class Deck {
     //deal(arg) deals all of the deck to a player.
     //should be used after declaring war. 
     public void deal(Player p){
-        //must have two players initialized to use
         for (int i = 0; i < deck.size(); i++) {
             //adds index "i" card to each player.
             p.addPlayerCard(deck.get(i));
